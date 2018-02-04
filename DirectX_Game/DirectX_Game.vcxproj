@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{07D99301-C161-4565-8E7A-BD9826B4AB47}</ProjectGuid>
+    <Keyword>Win32Proj</Keyword>
+    <RootNamespace>DirectX_Game</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>Unicode</CharacterSet>
+    <PlatformToolset>v141</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+    <IncludePath>$(DXSDK_DIR)include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)lib\x86;$(LibraryPath)</LibraryPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>false</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level4</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <SubSystem>Windows</SubSystem>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="baseScene.cpp" />
+    <ClCompile Include="building.cpp" />
+    <ClCompile Include="bullet.cpp" />
+    <ClCompile Include="camera.cpp" />
+    <ClCompile Include="cloud.cpp" />
+    <ClCompile Include="collision.cpp" />
+    <ClCompile Include="cubeCollider.cpp" />
+    <ClCompile Include="DebugFont.cpp" />
+    <ClCompile Include="enemyModel.cpp" />
+    <ClCompile Include="baseEnemyStatus.cpp" />
+    <ClCompile Include="exprode.cpp" />
+    <ClCompile Include="fade.cpp" />
+    <ClCompile Include="file.cpp" />
+    <ClCompile Include="fire.cpp" />
+    <ClCompile Include="game.cpp" />
+    <ClCompile Include="gaugeBox.cpp" />
+    <ClCompile Include="gaugeMeter.cpp" />
+    <ClCompile Include="goalModel.cpp" />
+    <ClCompile Include="goalPosition.cpp" />
+    <ClCompile Include="input.cpp" />
+    <ClCompile Include="item.cpp" />
+    <ClCompile Include="light.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="manager.cpp" />
+    <ClCompile Include="meshDome.cpp" />
+    <ClCompile Include="meshDraw.cpp" />
+    <ClCompile Include="meshField.cpp" />
+    <ClCompile Include="miniMap.cpp" />
+    <ClCompile Include="miniMapPlayer.cpp" />
+    <ClCompile Include="model.cpp" />
+    <ClCompile Include="modelManager.cpp" />
+    <ClCompile Include="number.cpp" />
+    <ClCompile Include="particle.cpp" />
+    <ClCompile Include="particleBillboard.cpp" />
+    <ClCompile Include="particleManager.cpp" />
+    <ClCompile Include="pause.cpp" />
+    <ClCompile Include="physics.cpp" />
+    <ClCompile Include="player.cpp" />
+    <ClCompile Include="ranking.cpp" />
+    <ClCompile Include="rankingScore.cpp" />
+    <ClCompile Include="renderer.cpp" />
+    <ClCompile Include="result.cpp" />
+    <ClCompile Include="scene.cpp" />
+    <ClCompile Include="scene2D.cpp" />
+    <ClCompile Include="scene3D.cpp" />
+    <ClCompile Include="sceneManager.cpp" />
+    <ClCompile Include="score.cpp" />
+    <ClCompile Include="shader.cpp" />
+    <ClCompile Include="sphereCollider.cpp" />
+    <ClCompile Include="startButton.cpp" />
+    <ClCompile Include="startModel.cpp" />
+    <ClCompile Include="startPosition.cpp" />
+    <ClCompile Include="target.cpp" />
+    <ClCompile Include="targetRespawnPosition.cpp" />
+    <ClCompile Include="textureManager.cpp" />
+    <ClCompile Include="time.cpp" />
+    <ClCompile Include="title.cpp" />
+    <ClCompile Include="titleLogo.cpp" />
+    <ClCompile Include="xBoxInput.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="baseScene.h" />
+    <ClInclude Include="building.h" />
+    <ClInclude Include="bullet.h" />
+    <ClInclude Include="camera.h" />
+    <ClInclude Include="cloud.h" />
+    <ClInclude Include="collision.h" />
+    <ClInclude Include="cubeCollider.h" />
+    <ClInclude Include="DebugFont.h" />
+    <ClInclude Include="enemyModel.h" />
+    <ClInclude Include="baseEnemyStatus.h" />
+    <ClInclude Include="exprode.h" />
+    <ClInclude Include="fade.h" />
+    <ClInclude Include="file.h" />
+    <ClInclude Include="fire.h" />
+    <ClInclude Include="game.h" />
+    <ClInclude Include="gaugeBox.h" />
+    <ClInclude Include="gaugeMeter.h" />
+    <ClInclude Include="goalModel.h" />
+    <ClInclude Include="goalPosition.h" />
+    <ClInclude Include="input.h" />
+    <ClInclude Include="item.h" />
+    <ClInclude Include="light.h" />
+    <ClInclude Include="main.h" />
+    <ClInclude Include="manager.h" />
+    <ClInclude Include="meshDome.h" />
+    <ClInclude Include="meshDraw.h" />
+    <ClInclude Include="meshField.h" />
+    <ClInclude Include="miniMap.h" />
+    <ClInclude Include="miniMapPlayer.h" />
+    <ClInclude Include="model.h" />
+    <ClInclude Include="modelManager.h" />
+    <ClInclude Include="number.h" />
+    <ClInclude Include="particle.h" />
+    <ClInclude Include="particleBillboard.h" />
+    <ClInclude Include="particleManager.h" />
+    <ClInclude Include="pause.h" />
+    <ClInclude Include="physics.h" />
+    <ClInclude Include="player.h" />
+    <ClInclude Include="ranking.h" />
+    <ClInclude Include="rankingScore.h" />
+    <ClInclude Include="renderer.h" />
+    <ClInclude Include="result.h" />
+    <ClInclude Include="scene.h" />
+    <ClInclude Include="scene2D.h" />
+    <ClInclude Include="scene3D.h" />
+    <ClInclude Include="sceneManager.h" />
+    <ClInclude Include="score.h" />
+    <ClInclude Include="shader.h" />
+    <ClInclude Include="sphereCollider.h" />
+    <ClInclude Include="startButton.h" />
+    <ClInclude Include="startModel.h" />
+    <ClInclude Include="startPosition.h" />
+    <ClInclude Include="target.h" />
+    <ClInclude Include="targetRespawnPosition.h" />
+    <ClInclude Include="textureManager.h" />
+    <ClInclude Include="time.h" />
+    <ClInclude Include="title.h" />
+    <ClInclude Include="titleLogo.h" />
+    <ClInclude Include="xBoxInput.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="PixelShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Pixel</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Pixel</ShaderType>
+    </FxCompile>
+    <FxCompile Include="VertexShader.hlsl">
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Vertex</ShaderType>
+      <ShaderType Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Vertex</ShaderType>
+    </FxCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
