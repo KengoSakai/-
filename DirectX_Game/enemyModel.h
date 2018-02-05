@@ -6,6 +6,15 @@
 class CEnemyModel : public CModel
 {
 public:
+	typedef enum
+	{
+		NONE = 0,
+		WALK,
+		ATTACK,
+		JUMP,
+		DAMAGE,
+		MAX
+	}STATE;
 	~CEnemyModel() {}	//デストラクタ
 	void Initialize(void);
 	void Uninitialize(void);
@@ -16,7 +25,12 @@ public:
 	void HitObject(void);
 private:
 	CEnemyModel();	//コンストラクタ
+	void Move(void);
 	int Count;
+	float Speed;
+	STATE State;
+	void SearchObject(void);
+	D3DXVECTOR3 TargetPosition;
 protected:
 };
 #endif

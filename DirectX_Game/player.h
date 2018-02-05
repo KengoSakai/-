@@ -45,7 +45,6 @@ private:
 	void HitObject(void);
 	float Speed;
 	STATE State;
-	CScore *pScore;
 	CGaugeMeter *pGauge;
 	D3DXVECTOR3 CameraVector;
 };

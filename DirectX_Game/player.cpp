@@ -226,7 +226,7 @@ void CPlayer::HitObject(void)
 				if (CCollision::SphereCollision(Position, pItem->GetPosition()))
 				{
 					pItem->Hit(OBJTYPE_PLAYER);
-					pScore->AddScore(10);
+
 				}
 			}
 

@@ -2,6 +2,9 @@
 #include "enemyModel.h"
 #include "particle.h"
 #include "bullet.h"
+#include "physics.h"
+#include "target.h"
+#include "collision.h"
 /******************************************************************
 コンストラクタ
 *******************************************************************/
@@ -18,6 +21,9 @@ void CEnemyModel::Initialize(void)
 	Position = D3DXVECTOR3(0.0f,10.0f,20.0f);
 	Rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	Scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+	Vector = D3DXVECTOR3(0.0f, 0.0f, -1.0f);
+	Speed = 0.0f;
+	State = WALK;
 }
 
 /******************************************************************
@@ -33,7 +39,22 @@ void CEnemyModel::Uninitialize(void)
 *******************************************************************/
 void CEnemyModel::Update(void)
 {
+	//移動処理
+	Move();
 
+	SearchObject();
+	
+	//オブジェクト当たり判定処理
+	//HitObject();
+
+	//待機状態の場合
+	Speed *= 0.96f;
+
+	//移動状態の場合
+	if (State == WALK && Speed < 3.0f)
+	{
+		Speed += 0.1f;
+	}
 }
 
 /******************************************************************
@@ -79,5 +100,62 @@ CEnemyModel *CEnemyModel::Create(void)
 
 void CEnemyModel::HitObject(void)
 {
-	Uninitialize();
+	//Uninitialize();
+}
+
+/******************************************************************
+移動処理関数
+*******************************************************************/
+void CEnemyModel::Move(void)
+{
+	//ステートを移動に変更
+	State = WALK;
+
+	//ターゲット方向のベクトルを求める
+	Vector = TargetPosition - Position;
+	
+	//法線を正規化
+	D3DXVec3Normalize(&Vector,&Vector);
+
+	if (CCollision::Distance(Position, TargetPosition) < 5000)
+	{
+		CBullet::Create(Position, Vector);
+	}
+
+	if (State == WALK)
+	{
+		Position = CPhysics::AddForce(Position, Speed * Vector);
+	}
+}
+
+/******************************************************************
+オブジェクト探査処理関数
+*******************************************************************/
+void CEnemyModel::SearchObject(void)
+{
+	//オブジェクト数繰り返す
+	for (int nCntScene = 0; nCntScene < NUM_OBJECT; nCntScene++)
+	{
+		//オブジェクトの情報取得
+		CScene *pScene = CScene::GetScene(nCntScene);
+
+		//オブジェクトのポインターがNULLでないなら
+		if (pScene != NULL)
+		{
+			//オブジェクトの型を取得
+			CScene::OBJTYPE ObjType = pScene->GetObjType();
+
+			if (ObjType == CScene::OBJTYPE_TARGET)
+			{
+				//オブジェクトポインタ
+				CTarget *pTarget = (CTarget*)pScene;
+
+				//if (TargetPosition = pTarget->GetPosition())
+				{
+					TargetPosition = pTarget->GetPosition();
+					break;
+				}
+			}
+		}
+	}
 }
