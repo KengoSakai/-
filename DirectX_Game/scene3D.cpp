@@ -37,7 +37,8 @@
 *******************************************************************/
 CScene3D::CScene3D()
 {
-
+	pTexture = NULL;
+	m_pVtxBuff = NULL;
 }
 
 /******************************************************************
@@ -68,6 +69,12 @@ void CScene3D::Uninitialize(void)
 	{
 		m_pVtxBuff->Release();
 		m_pVtxBuff = NULL;
+	}
+	
+	if (pTexture != NULL)
+	{
+		pTexture->Release();
+		pTexture = NULL;
 	}
 	CScene::Release();
 }

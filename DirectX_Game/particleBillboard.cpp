@@ -42,6 +42,8 @@
 *******************************************************************/
 CParticleBillboard::CParticleBillboard()
 {
+	pTexture = NULL;
+	m_pVtxBuff = NULL;
 	Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 }
 
@@ -71,12 +73,17 @@ void CParticleBillboard::Initialize(void)
 *******************************************************************/
 void CParticleBillboard::Uninitialize(void)
 {
-
 	//3Dポリゴンのバッファの破棄
 	if (m_pVtxBuff != NULL)
 	{
 		m_pVtxBuff->Release();
 		m_pVtxBuff = NULL;
+	}
+	
+	if (pTexture!=NULL)
+	{
+		pTexture->Release();
+		pTexture = NULL;
 	}
 
 	//シーン破棄

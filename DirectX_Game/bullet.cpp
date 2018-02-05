@@ -128,8 +128,8 @@ void CBullet::HitObject(void)
 				//‹…‚Ì“–‚½‚è”»’è
 				if (CCollision::SphereCollision(Position, pEnemy->GetPosition()))
 				{
-					pEnemy->HitObject();
-					CExprode::Create(Position);
+					//pEnemy->HitObject();
+					//CExprode::Create(Position);
 					State = HIT;
 					continue;
 				}
