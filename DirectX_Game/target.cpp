@@ -72,7 +72,7 @@ void CTarget::HitObject(OBJTYPE Type)
 
 	else if (Type == OBJTYPE_ENEMY)
 	{
-	//	CGame::GetOtherPlayerScore()->AddScore(10);
+		CGame::GetOtherPlayerScore()->AddScore(10);
 	}
 
 	else

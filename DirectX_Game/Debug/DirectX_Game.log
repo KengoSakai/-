@@ -1,88 +1,11 @@
-﻿  compilation object save succeeded; see C:\Users\sakai.kengo\Documents\3年次科目\個人制作\就職作品\DirectX_Game\Debug\PixelShader.cso
-  compilation object save succeeded; see C:\Users\sakai.kengo\Documents\3年次科目\個人制作\就職作品\DirectX_Game\Debug\VertexShader.cso
-  xBoxInput.cpp
-  titleLogo.cpp
-  title.cpp
-  time.cpp
-  textureManager.cpp
-  targetRespawnPosition.cpp
+﻿  game.cpp
+  コードを生成中...
+  コンパイル中...
   target.cpp
-  startPosition.cpp
-  startModel.cpp
-  startButton.cpp
-  sphereCollider.cpp
-  shader.cpp
-  score.cpp
+  コードを生成中...
+  スキップ中... (関連する変更は検出されませんでした)
+  title.cpp
   sceneManager.cpp
-  scene3D.cpp
-  scene2D.cpp
-  scene.cpp
-  result.cpp
-  renderer.cpp
-  rankingScore.cpp
-  コードを生成中...
-  コンパイル中...
-  ranking.cpp
-  player.cpp
-  physics.cpp
-  pause.cpp
-  particleManager.cpp
-  particleBillboard.cpp
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\particlebillboard.cpp(217): warning C4458: 'Position' を宣言すると、クラス メンバーが隠蔽されます
-  c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\particlebillboard.h(60): note: 'CParticleBillboard::Position' の宣言を確認してください
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\particlebillboard.cpp(217): warning C4458: 'Size' を宣言すると、クラス メンバーが隠蔽されます
-  c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\particlebillboard.h(56): note: 'CParticleBillboard::Size' の宣言を確認してください
-  particle.cpp
-  number.cpp
-  modelManager.cpp
-  model.cpp
-  miniMapPlayer.cpp
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\minimapplayer.cpp(90): warning C4189: 'pPlayer': ローカル変数が初期化されましたが、参照されていません
-  miniMap.cpp
-  meshField.cpp
-  meshDraw.cpp
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\meshdraw.cpp(252): warning C4244: '=': 'int' から 'WORD' への変換です。データが失われる可能性があります。
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\meshdraw.cpp(257): warning C4244: '=': 'int' から 'WORD' への変換です。データが失われる可能性があります。
-  meshDome.cpp
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\meshdome.cpp(189): warning C4189: 'nCntSec': ローカル変数が初期化されましたが、参照されていません
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\meshdome.cpp(300): warning C4244: '=': 'int' から 'WORD' への変換です。データが失われる可能性があります。
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\meshdome.cpp(305): warning C4244: '=': 'int' から 'WORD' への変換です。データが失われる可能性があります。
   manager.cpp
-  main.cpp
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\main.cpp(35): warning C4100: 'lpCmdLine': 引数は関数の本体部で 1 度も参照されません。
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\main.cpp(35): warning C4100: 'hPrevInstance': 引数は関数の本体部で 1 度も参照されません。
-  light.cpp
   item.cpp
-  input.cpp
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\input.cpp(33): warning C4100: 'hWnd': 引数は関数の本体部で 1 度も参照されません。
-  コードを生成中...
-  コンパイル中...
-  goalPosition.cpp
-  goalModel.cpp
-  gaugeMeter.cpp
-  gaugeBox.cpp
-  game.cpp
-  fire.cpp
-  file.cpp
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\file.cpp(23): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: 'fopen' の宣言を確認してください
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\file.cpp(58): warning C4996: 'fopen': This function or variable may be unsafe. Consider using fopen_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(207): note: 'fopen' の宣言を確認してください
-  fade.cpp
-  exprode.cpp
-  baseEnemyStatus.cpp
-  enemyModel.cpp
-  DebugFont.cpp
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\debugfont.cpp(52): warning C4996: 'sprintf': This function or variable may be unsafe. Consider using sprintf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-  c:\program files (x86)\windows kits\10\include\10.0.16299.0\ucrt\stdio.h(1772): note: 'sprintf' の宣言を確認してください
-  cubeCollider.cpp
-  collision.cpp
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\collision.cpp(22): warning C4100: 'OtherPos': 引数は関数の本体部で 1 度も参照されません。
-c:\users\sakai.kengo\documents\3年次科目\個人制作\就職作品\directx_game\collision.cpp(22): warning C4100: 'MyPos': 引数は関数の本体部で 1 度も参照されません。
-  cloud.cpp
-  camera.cpp
-  bullet.cpp
-  building.cpp
-  baseScene.cpp
-  コードを生成中...
-  DirectX_Game.vcxproj -> C:\Users\sakai.kengo\Documents\3年次科目\個人制作\就職作品\DirectX_Game\Debug\DirectX_Game.exe
+  DirectX_Game.vcxproj -> C:\Users\Kengo.Sakai\Documents\個人製作\就職作品\DirectX_Game\Debug\DirectX_Game.exe

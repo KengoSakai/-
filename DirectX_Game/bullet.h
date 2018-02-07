@@ -6,11 +6,11 @@ class CBullet : public CScene3D
 {
 public:
 	~CBullet() {}
-	void Initialize(D3DXVECTOR3 OrderPosition, D3DXVECTOR3 OrderVector);
+	void Initialize(D3DXVECTOR3 OrderPosition, D3DXVECTOR3 OrderVector, CScene::OBJTYPE OrderObjectType);
 	void Uninitialize(void);
 	void Update(void);
 	void Draw(void);
-	static CBullet *Create(D3DXVECTOR3 OrderPosition, D3DXVECTOR3 OrderVector);
+	static CBullet *Create(D3DXVECTOR3 OrderPosition, D3DXVECTOR3 OrderVector, CScene::OBJTYPE OrderObjectType);
 private:
 	typedef enum
 	{
@@ -23,7 +23,7 @@ private:
 	CBullet();
 	void HitObject(void);
 	STATE State;
-
+	CScene::OBJTYPE OwnerObjectType;
 	static CRenderer *m_pRenderer;
 };
 #endif

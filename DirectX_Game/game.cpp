@@ -35,6 +35,7 @@
 #include "score.h"
 
 CScore *CGame::pScore = NULL;
+CScore *CGame::pOtherPlayerScore = NULL;
 /******************************************************************
 コンストラクタ
 *******************************************************************/
@@ -131,12 +132,19 @@ CBaseScene::SCENE_STATE CGame::Update(void)
 *******************************************************************/
 void CGame::Create2D(void)
 {
+	//ミニマップを生成
 	CMiniMap::Create();
 
+	//ミニマップに表示するプレイヤーを生成
 	CMiniMapPlayer::Create();
 
+	//プレイヤーのスコアを生成
 	pScore = CScore::Create(CScene::OBJTYPE_SCORE);
 
+	//敵のスコアを生成
+	pOtherPlayerScore= CScore::Create(CScene::OBJTYPE_OTHERPLAYERSCORE);
+
+	//アイテムを生成
 	pTime = CTime::Create();
 }
 

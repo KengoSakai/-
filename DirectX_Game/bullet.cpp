@@ -39,7 +39,7 @@ CBullet::CBullet()
 /******************************************************************
 初期化処理関数
 *******************************************************************/
-void CBullet::Initialize(D3DXVECTOR3 OrderPosition, D3DXVECTOR3 OrderVector)
+void CBullet::Initialize(D3DXVECTOR3 OrderPosition, D3DXVECTOR3 OrderVector, CScene::OBJTYPE OrderObjectType)
 {
 	Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	Size = SIZE;
@@ -50,6 +50,7 @@ void CBullet::Initialize(D3DXVECTOR3 OrderPosition, D3DXVECTOR3 OrderVector)
 	Rotate.y = 0.0f;
 	Scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 	Color = D3DXCOLOR(255.0f, 125.0f, 5.0f, 255.0f);
+	OwnerObjectType = OrderObjectType;
 }
 
 /******************************************************************
@@ -76,6 +77,7 @@ void CBullet::Update(void)
 
 	if (Color.a < 0.0f)
 	{
+		//弾の破棄
 		Uninitialize();
 	}
 }
@@ -91,11 +93,11 @@ void CBullet::Draw(void)
 /******************************************************************
 オブジェクト生成処理関数
 *******************************************************************/
-CBullet *CBullet::Create(D3DXVECTOR3 OrderPosition, D3DXVECTOR3 OrderVector)
+CBullet *CBullet::Create(D3DXVECTOR3 OrderPosition, D3DXVECTOR3 OrderVector, CScene::OBJTYPE OrderObjectType)
 {
 	CBullet *pBullet;
 	pBullet = new CBullet;
-	pBullet->Initialize(OrderPosition, OrderVector);
+	pBullet->Initialize(OrderPosition, OrderVector, OrderObjectType);
 	CManager::GetTextureManager()->LoadTexture(CTextureManager::TYPE_PARTICLE);
 	pBullet->BindTexture(CManager::GetTextureManager()->GetTexture(CTextureManager::TYPE_PARTICLE));
 	pBullet->SetObjType(OBJTYPE_BULLET);
@@ -130,7 +132,11 @@ void CBullet::HitObject(void)
 				{
 					//pEnemy->HitObject();
 					//CExprode::Create(Position);
+					
+					//ステートを当たったに変更
 					State = HIT;
+
+					//ループを続行
 					continue;
 				}
 			}
@@ -144,12 +150,19 @@ void CBullet::HitObject(void)
 				//球の当たり判定
 				if (CCollision::SphereCollision(Position, pTarget->GetPosition()))
 				{
-					pTarget->HitObject(OBJTYPE_PLAYER);
+					//ターゲットが当たったときの処理
+					pTarget->HitObject(OwnerObjectType);
+					
+					//爆破エフェクト分繰り返す
 					for (int count = 0; count < NUM_EXPRODE; count++)
 					{
+						//爆破生成
 						CExprode::Create(Position);
 					}
+					//ステートを当たったに変更
 					State = HIT;
+				
+					//ループを続行
 					continue;
 				}
 			}
@@ -160,9 +173,10 @@ void CBullet::HitObject(void)
 		}
 	}
 
-	//何かオブジェクトに当たった
+	//何かオブジェクトに当たったら
 	if (State == HIT)
 	{
+		//弾の破棄
 		Uninitialize();
 	}
 }

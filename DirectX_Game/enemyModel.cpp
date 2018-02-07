@@ -119,7 +119,7 @@ void CEnemyModel::Move(void)
 
 	if (CCollision::Distance(Position, TargetPosition) < 5000)
 	{
-		CBullet::Create(Position, Vector);
+		CBullet::Create(Position, Vector, OBJTYPE_ENEMY);
 	}
 
 	if (State == WALK)

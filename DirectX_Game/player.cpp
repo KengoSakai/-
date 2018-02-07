@@ -192,7 +192,7 @@ void CPlayer::Move(void)
 
 	if (CManager::GetInputKeyboard()->GetKeyTrigger(DIK_SPACE))
 	{
-		CBullet::Create(Position, Vector);
+		CBullet::Create(Position, Vector, OBJTYPE_PLAYER);
 	}
 
 	if (State == WALK)
