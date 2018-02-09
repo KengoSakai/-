@@ -33,9 +33,13 @@
 #include "cloud.h"
 #include "target.h"
 #include "score.h"
-
+#include "timeBox.h"
+/******************************************************************
+前方宣言
+*******************************************************************/
 CScore *CGame::pScore = NULL;
 CScore *CGame::pOtherPlayerScore = NULL;
+
 /******************************************************************
 コンストラクタ
 *******************************************************************/
@@ -117,12 +121,12 @@ CBaseScene::SCENE_STATE CGame::Update(void)
 		}
 
 		//ポーズボタンが入力されたら
-		/*if ()
+	//	if ()
 		{
 			//ポーズ画面を表示
 
 		}
-*/
+
 	}
 	return CBaseScene::SCENE_CONTINUE;
 }
@@ -143,6 +147,8 @@ void CGame::Create2D(void)
 
 	//敵のスコアを生成
 	pOtherPlayerScore= CScore::Create(CScene::OBJTYPE_OTHERPLAYERSCORE);
+
+	CTimeBox::Create();
 
 	//アイテムを生成
 	pTime = CTime::Create();

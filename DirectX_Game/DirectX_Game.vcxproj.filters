@@ -67,14 +67,8 @@
     <Filter Include="ソース ファイル\mesh">
       <UniqueIdentifier>{ebfcfa3e-1a51-4565-a0f6-ad38e550592e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\01_GameObject\goal">
-      <UniqueIdentifier>{9a65d1b7-718c-4e19-8388-4a6096daaf6d}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ソース ファイル\01_GameObject\start">
       <UniqueIdentifier>{dd226856-96be-45f8-9dbf-f4647da9c57b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="ヘッダー ファイル\01_GameObject\goal">
-      <UniqueIdentifier>{13ad7f2a-0853-49ae-a820-d9f783050256}</UniqueIdentifier>
     </Filter>
     <Filter Include="ヘッダー ファイル\01_GameObject\start">
       <UniqueIdentifier>{99482cf4-589f-4219-b41c-d2a07ca0247e}</UniqueIdentifier>
@@ -219,12 +213,6 @@
     <ClCompile Include="startButton.cpp">
       <Filter>ソース ファイル\00_TitleObject</Filter>
     </ClCompile>
-    <ClCompile Include="goalPosition.cpp">
-      <Filter>ソース ファイル\01_GameObject\goal</Filter>
-    </ClCompile>
-    <ClCompile Include="goalModel.cpp">
-      <Filter>ソース ファイル\01_GameObject\goal</Filter>
-    </ClCompile>
     <ClCompile Include="startPosition.cpp">
       <Filter>ソース ファイル\01_GameObject\start</Filter>
     </ClCompile>
@@ -330,6 +318,9 @@
     <ClCompile Include="exprode.cpp">
       <Filter>ソース ファイル\01_GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="timeBox.cpp">
+      <Filter>ソース ファイル\01_GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scene.h">
@@ -400,12 +391,6 @@
     </ClInclude>
     <ClInclude Include="startPosition.h">
       <Filter>ヘッダー ファイル\01_GameObject\start</Filter>
-    </ClInclude>
-    <ClInclude Include="goalModel.h">
-      <Filter>ヘッダー ファイル\01_GameObject\goal</Filter>
-    </ClInclude>
-    <ClInclude Include="goalPosition.h">
-      <Filter>ヘッダー ファイル\01_GameObject\goal</Filter>
     </ClInclude>
     <ClInclude Include="gaugeBox.h">
       <Filter>ヘッダー ファイル\01_GameObject\gauge</Filter>
@@ -507,6 +492,9 @@
       <Filter>ヘッダー ファイル\01_GameObject</Filter>
     </ClInclude>
     <ClInclude Include="exprode.h">
+      <Filter>ヘッダー ファイル\01_GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="timeBox.h">
       <Filter>ヘッダー ファイル\01_GameObject</Filter>
     </ClInclude>
   </ItemGroup>

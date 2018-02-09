@@ -166,6 +166,7 @@ void CBullet::HitObject(void)
 					continue;
 				}
 			}
+
 			else
 			{
 

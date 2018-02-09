@@ -97,8 +97,6 @@
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gaugeBox.cpp" />
     <ClCompile Include="gaugeMeter.cpp" />
-    <ClCompile Include="goalModel.cpp" />
-    <ClCompile Include="goalPosition.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="item.cpp" />
     <ClCompile Include="light.cpp" />
@@ -136,6 +134,7 @@
     <ClCompile Include="targetRespawnPosition.cpp" />
     <ClCompile Include="textureManager.cpp" />
     <ClCompile Include="time.cpp" />
+    <ClCompile Include="timeBox.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="titleLogo.cpp" />
     <ClCompile Include="xBoxInput.cpp" />
@@ -158,8 +157,6 @@
     <ClInclude Include="game.h" />
     <ClInclude Include="gaugeBox.h" />
     <ClInclude Include="gaugeMeter.h" />
-    <ClInclude Include="goalModel.h" />
-    <ClInclude Include="goalPosition.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="light.h" />
@@ -197,6 +194,7 @@
     <ClInclude Include="targetRespawnPosition.h" />
     <ClInclude Include="textureManager.h" />
     <ClInclude Include="time.h" />
+    <ClInclude Include="timeBox.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="titleLogo.h" />
     <ClInclude Include="xBoxInput.h" />

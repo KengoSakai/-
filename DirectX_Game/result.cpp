@@ -72,7 +72,6 @@ void CResult::Uninit(void)
 	CScene::ReleaseAll();
 
 	CParticleManager::ReleaseAll();
-
 }
 
 /******************************************************************
