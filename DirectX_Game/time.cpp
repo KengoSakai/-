@@ -47,7 +47,7 @@ CTime :: ~CTime()
 *******************************************************************/
 void CTime::Initialize(void)
 {
-	Position = D3DXVECTOR3((float)(SCREEN_WIDTH / 2), 20.0f, 0.0f);
+	Position = D3DXVECTOR3(620.0f, 10.0f, 0.0f);
 
 	int nTime = 0;
 

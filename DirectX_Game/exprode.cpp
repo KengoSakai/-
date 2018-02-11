@@ -120,7 +120,6 @@ CExprode *CExprode::Create(D3DXVECTOR3 OrderPosition)
 {
 	CExprode *pExprode;
 
-
 	//インスタンス生成
 	pExprode = new CExprode;
 

@@ -30,7 +30,7 @@ CScore::CScore(OBJTYPE type)
 	if (type == OBJTYPE_SCORE)
 	{
 		//•Ï”‰Šú‰»
-		Position = D3DXVECTOR3(300.0f, 30.0f, 0.0f);
+		Position = D3DXVECTOR3(450.0f, -20.0f, 0.0f);
 		return;
 	}
 

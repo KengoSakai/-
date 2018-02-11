@@ -11,6 +11,7 @@
 /******************************************************************
 インクルードファイル
 *******************************************************************/
+#include "manager.h"
 #include "timeBox.h"
 
 /******************************************************************
@@ -20,7 +21,7 @@ CTimeBox::CTimeBox()
 {
 	Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	WidthHeight = D3DXVECTOR3(SCREEN_WIDTH, 100.0f, 0.0f);
-	Color = D3DXCOLOR(0.0f, 0.0f, 0.0f, 125.0f);
+	Color = D3DXCOLOR(255.0f, 255.0f, 255.0f, 255.0f);
 }
 
 /******************************************************************
@@ -72,9 +73,11 @@ CTimeBox *CTimeBox::Create(void)
 	
 	//オブジェクトの型を設定
 	pTimeGauge->SetObjType(OBJTYPE_TIME);
+	
+	CManager::GetTextureManager()->LoadTexture(CTextureManager::TYPE_SCREEN_UI);
 
 	//テクスチャを設定
-	pTimeGauge->BindTexture(NULL);
+	pTimeGauge->BindTexture(CManager::GetTextureManager()->GetTexture(CTextureManager::TYPE_SCREEN_UI));
 
 	return pTimeGauge;
 }

@@ -321,6 +321,9 @@
     <ClCompile Include="timeBox.cpp">
       <Filter>ソース ファイル\01_GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="screenUIMat.cpp">
+      <Filter>ソース ファイル\01_GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scene.h">
@@ -495,6 +498,9 @@
       <Filter>ヘッダー ファイル\01_GameObject</Filter>
     </ClInclude>
     <ClInclude Include="timeBox.h">
+      <Filter>ヘッダー ファイル\01_GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="screenUIMat.h">
       <Filter>ヘッダー ファイル\01_GameObject</Filter>
     </ClInclude>
   </ItemGroup>

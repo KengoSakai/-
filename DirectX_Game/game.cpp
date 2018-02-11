@@ -34,6 +34,7 @@
 #include "target.h"
 #include "score.h"
 #include "timeBox.h"
+#include "screenUIMat.h"
 /******************************************************************
 前方宣言
 *******************************************************************/
@@ -141,17 +142,19 @@ void CGame::Create2D(void)
 
 	//ミニマップに表示するプレイヤーを生成
 	CMiniMapPlayer::Create();
-
-	//プレイヤーのスコアを生成
-	pScore = CScore::Create(CScene::OBJTYPE_SCORE);
-
-	//敵のスコアを生成
-	pOtherPlayerScore= CScore::Create(CScene::OBJTYPE_OTHERPLAYERSCORE);
+	
+	CScreenUIMat::Create();
 
 	CTimeBox::Create();
 
 	//アイテムを生成
 	pTime = CTime::Create();
+
+	//プレイヤーのスコアを生成
+	pScore = CScore::Create(CScene::OBJTYPE_SCORE);
+
+	//敵のスコアを生成
+	pOtherPlayerScore = CScore::Create(CScene::OBJTYPE_OTHERPLAYERSCORE);
 }
 
 /******************************************************************

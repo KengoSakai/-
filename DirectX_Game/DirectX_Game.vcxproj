@@ -125,6 +125,7 @@
     <ClCompile Include="scene3D.cpp" />
     <ClCompile Include="sceneManager.cpp" />
     <ClCompile Include="score.cpp" />
+    <ClCompile Include="screenUIMat.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="sphereCollider.cpp" />
     <ClCompile Include="startButton.cpp" />
@@ -185,6 +186,7 @@
     <ClInclude Include="scene3D.h" />
     <ClInclude Include="sceneManager.h" />
     <ClInclude Include="score.h" />
+    <ClInclude Include="screenUIMat.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="sphereCollider.h" />
     <ClInclude Include="startButton.h" />

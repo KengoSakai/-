@@ -25,7 +25,7 @@
 #define NUM_POLYGON (2)
 
 #define POLYGON_POSX (500)											//ポリゴンの表示位置X
-#define POLYGON_POSY (10)											//ポリゴンの表示位置Y
+#define POLYGON_POSY (0)											//ポリゴンの表示位置Y
 #define POLYGON_WIDTH (30)											//ポリゴンの幅
 #define POLYGON_HEIGHT (100)										//ポリゴンの高さ
 #define POLYGON_SCALE (30.0f)
@@ -217,10 +217,10 @@ void CNumber::MakeVertex(int Digit)
 		0);
 
 	//頂点座標の設定
-	pVtx[0].pos = D3DXVECTOR3(Position.x - (Digit * POLYGON_SCALE), Position.y, -10.0f);										//(X.Y.Z)
-	pVtx[1].pos = D3DXVECTOR3(Position.x + POLYGON_WIDTH - (Digit * POLYGON_SCALE), Position.y, -10.0f);						//(X.Y.Z)
-	pVtx[2].pos = D3DXVECTOR3(Position.x - (Digit * POLYGON_SCALE), Position.y + POLYGON_HEIGHT, -10.0f);						//(X.Y.Z)
-	pVtx[3].pos = D3DXVECTOR3(Position.x + POLYGON_WIDTH - (Digit * POLYGON_SCALE), Position.y + POLYGON_HEIGHT, -10.0f);		//(X.Y.Z)
+	pVtx[0].pos = D3DXVECTOR3(Position.x - (Digit * POLYGON_SCALE), Position.y, 0.0f);										//(X.Y.Z)
+	pVtx[1].pos = D3DXVECTOR3(Position.x + POLYGON_WIDTH - (Digit * POLYGON_SCALE), Position.y, 0.0f);						//(X.Y.Z)
+	pVtx[2].pos = D3DXVECTOR3(Position.x - (Digit * POLYGON_SCALE), Position.y + POLYGON_HEIGHT, 0.0f);						//(X.Y.Z)
+	pVtx[3].pos = D3DXVECTOR3(Position.x + POLYGON_WIDTH - (Digit * POLYGON_SCALE), Position.y + POLYGON_HEIGHT, 0.0f);		//(X.Y.Z)
 
 																																//頂点フラグ
 	pVtx[0].rhw = 1.0f;

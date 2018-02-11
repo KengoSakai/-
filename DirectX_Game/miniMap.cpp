@@ -4,7 +4,7 @@
 
 CMiniMap::CMiniMap()
 {
-	Position = D3DXVECTOR3(900.0f, 30.0f, 0.0f);
+	Position = D3DXVECTOR3(900.0f, 200.0f, 0.0f);
 	WidthHeight = D3DXVECTOR3(200.0f,200.0f,200.0f);
 	Color = D3DXCOLOR(0.0f, 0.0f, 0.0f, 125.0f);
 }
