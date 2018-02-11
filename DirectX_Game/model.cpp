@@ -196,7 +196,3 @@ void CModel::DrawShadow(void)
 	pD3DDevice->SetMaterial(&Matdef);
 }
 
-void CModel::SetModel(void)
-{
-
-}

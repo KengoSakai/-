@@ -40,6 +40,14 @@ void CModelManager::Initialize(void)
 	pModelList[TYPE_TREE] = "data/Model/tree_02.x";
 	pModelList[TYPE_ITEM] = "data/Model/a.x";
 	pModelList[TYPE_BUILDING] = "data/Model/building002.x";
+	pModelList[TYPE_BODY] = "data/Model/human/body.x";
+	pModelList[TYPE_HEAD] = "data/Model/human/Head.x";
+	pModelList[TYPE_LEFT_ARM] = "data/Model/human/LeftArm.x";
+	pModelList[TYPE_LEFT_HAND] = "data/Model/human/LeftHand.x";
+	pModelList[TYPE_RIGHT_ARM] = "data/Model/human/RightArm.x";
+	pModelList[TYPE_RIGHT_HAND] = "data/Model/human/RightHand.x";
+	pModelList[TYPE_LEFT_LEG] = "data/Model/human/LeftLeg.x";
+	pModelList[TYPE_RIGHT_LEG] = "data/Model/human/RightLeg.x";
 }
 
 /******************************************************************
@@ -61,7 +69,7 @@ void CModelManager::Unitialize(void)
 			pMesh[count]->Release();
 			pMesh[count] = NULL;
 		}
-		
+
 		//マテリアルバッファの破棄
 		if (pMatBuff[count] != NULL)
 		{
@@ -78,8 +86,8 @@ void CModelManager::LoadModel(MODEL_TYPE OrderModelType)
 {
 	//デバイス情報取得
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-	
-	if (pMatBuff[OrderModelType] == NULL && NumMaterials[OrderModelType] == NULL&&pMesh[OrderModelType]==NULL)
+
+	if (pMatBuff[OrderModelType] == NULL && NumMaterials[OrderModelType] == NULL && pMesh[OrderModelType] == NULL)
 	{
 		//モデル読み込み
 		if (FAILED(D3DXLoadMeshFromX(pModelList[OrderModelType], D3DXMESH_MANAGED, pDevice, NULL, &pMatBuff[OrderModelType], NULL, &NumMaterials[OrderModelType], &pMesh[OrderModelType])))
@@ -90,11 +98,17 @@ void CModelManager::LoadModel(MODEL_TYPE OrderModelType)
 	}
 }
 
-LPD3DXMESH CModelManager::GetMesh(MODEL_TYPE OrderModelType) 
-{ return pMesh[OrderModelType]; }
+LPD3DXMESH CModelManager::GetMesh(MODEL_TYPE OrderModelType)
+{
+	return pMesh[OrderModelType];
+}
 
-DWORD CModelManager::GetNumMaterials(MODEL_TYPE OrderModelType) 
-{ return NumMaterials[OrderModelType]; }
+DWORD CModelManager::GetNumMaterials(MODEL_TYPE OrderModelType)
+{
+	return NumMaterials[OrderModelType];
+}
 
-LPD3DXBUFFER CModelManager::GetMaterialBuffer(MODEL_TYPE OrderModelType) 
-{ return pMatBuff[OrderModelType]; }
+LPD3DXBUFFER CModelManager::GetMaterialBuffer(MODEL_TYPE OrderModelType)
+{
+	return pMatBuff[OrderModelType];
+}

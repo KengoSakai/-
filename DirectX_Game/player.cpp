@@ -50,8 +50,28 @@ CPlayer::CPlayer()
 {
 	CGauge::Create();
 	pGauge = CGaugeMeter::Create(300.0f);
+	CManager::GetModelManager()->LoadModel(CModelManager::TYPE_HEAD);
+	CManager::GetModelManager()->LoadModel(CModelManager::TYPE_BODY);
+	CManager::GetModelManager()->LoadModel(CModelManager::TYPE_RIGHT_ARM);
+	CManager::GetModelManager()->LoadModel(CModelManager::TYPE_LEFT_ARM);
+	CManager::GetModelManager()->LoadModel(CModelManager::TYPE_RIGHT_HAND);
+	CManager::GetModelManager()->LoadModel(CModelManager::TYPE_LEFT_HAND);
+	CManager::GetModelManager()->LoadModel(CModelManager::TYPE_RIGHT_LEG);
+	CManager::GetModelManager()->LoadModel(CModelManager::TYPE_LEFT_LEG);
 	CManager::GetModelManager()->LoadModel(CModelManager::TYPE_PLAYER);
 	//	CCubeCollider::Create();
+
+	//親を設定
+	ParentParts[BODY] = BODY;
+	ParentParts[HEAD] = BODY;
+	ParentParts[ARM_RIGHT] = BODY;
+	ParentParts[ARM_LEFT] = BODY;
+	ParentParts[HAND_RIGHT] = ARM_RIGHT;
+	ParentParts[HAND_LEFT] = ARM_LEFT;
+	ParentParts[LEG_RIGHT] = BODY;
+	ParentParts[LEG_LEFT] = BODY;
+	ParentParts[FOOT_RIGHT] = LEG_RIGHT;
+	ParentParts[FOOT_LEFT] = LEG_LEFT;
 }
 
 /******************************************************************
@@ -72,7 +92,7 @@ void CPlayer::Initialize(void)
 *******************************************************************/
 void CPlayer::Uninitialize(void)
 {
-	CModel::Uninitialize();
+	CMotionModel::Uninitialize();
 }
 
 /******************************************************************
@@ -84,16 +104,16 @@ void CPlayer::Update(void)
 	CameraVector.y = 0.0f;
 	Vector = Position - CameraVector;
 	D3DXVec3Normalize(&Vector, &Vector);
-	
+
 	//移動処理
 	Move();
-	
+
 	//オブジェクト当たり判定処理
 	HitObject();
 
 	//待機状態の場合
 	Speed *= 0.96f;
-	
+
 	//移動状態の場合
 	if (State == WALK && Speed < 3.0f)
 	{
@@ -106,8 +126,8 @@ void CPlayer::Update(void)
 *******************************************************************/
 void CPlayer::Draw(void)
 {
-	CModel::SetMatrix();
-	CModel::Draw();
+	CMotionModel::SetMatrix();
+	CMotionModel::Draw();
 
 #ifdef _DEBUG
 	CManager::GetDebugFont()->AddDebugFont("Player:Position.x", Position.x, 0, 0);
@@ -135,12 +155,40 @@ CPlayer *CPlayer::Create(void)
 	pPlayer->SetObjType(OBJTYPE_PLAYER);
 
 	//マテリアルバッファを送る
-	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_PLAYER));
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_BODY), BODY);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_HEAD), HEAD);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_RIGHT_ARM), ARM_RIGHT);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_LEFT_ARM), ARM_LEFT);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_RIGHT_HAND), HAND_RIGHT);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_LEFT_HAND), HAND_LEFT);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_RIGHT_LEG), LEG_RIGHT);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_LEFT_LEG), LEG_LEFT);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_PLAYER), FOOT_RIGHT);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_PLAYER), FOOT_LEFT);
 
 	//メッシュ情報を送る
-	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_PLAYER));
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_BODY), BODY);
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_HEAD), HEAD);
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_RIGHT_ARM), ARM_RIGHT);
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_LEFT_ARM), ARM_LEFT);
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_RIGHT_HAND), HAND_RIGHT);
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_LEFT_HAND), HAND_LEFT);
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_RIGHT_LEG), LEG_RIGHT);
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_LEFT_LEG), LEG_LEFT);
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_PLAYER), FOOT_RIGHT);
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_PLAYER), FOOT_LEFT);
 
-	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_PLAYER));
+
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_PLAYER), BODY);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_HEAD), HEAD);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_RIGHT_ARM), ARM_RIGHT);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_LEFT_ARM), ARM_LEFT);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_RIGHT_HAND), HAND_RIGHT);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_LEFT_HAND), HAND_LEFT);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_RIGHT_LEG), LEG_RIGHT);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_LEFT_LEG), LEG_LEFT);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_PLAYER), FOOT_RIGHT);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_PLAYER), FOOT_LEFT);
 
 	pPlayer->BindTexture(NULL);
 

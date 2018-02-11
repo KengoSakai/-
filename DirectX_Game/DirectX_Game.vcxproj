@@ -109,6 +109,7 @@
     <ClCompile Include="miniMapPlayer.cpp" />
     <ClCompile Include="model.cpp" />
     <ClCompile Include="modelManager.cpp" />
+    <ClCompile Include="motionModel.cpp" />
     <ClCompile Include="number.cpp" />
     <ClCompile Include="particle.cpp" />
     <ClCompile Include="particleBillboard.cpp" />
@@ -170,6 +171,7 @@
     <ClInclude Include="miniMapPlayer.h" />
     <ClInclude Include="model.h" />
     <ClInclude Include="modelManager.h" />
+    <ClInclude Include="motionModel.h" />
     <ClInclude Include="number.h" />
     <ClInclude Include="particle.h" />
     <ClInclude Include="particleBillboard.h" />

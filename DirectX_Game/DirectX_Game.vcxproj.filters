@@ -324,6 +324,9 @@
     <ClCompile Include="screenUIMat.cpp">
       <Filter>ソース ファイル\01_GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="motionModel.cpp">
+      <Filter>ソース ファイル\Drawer</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scene.h">
@@ -502,6 +505,9 @@
     </ClInclude>
     <ClInclude Include="screenUIMat.h">
       <Filter>ヘッダー ファイル\01_GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="motionModel.h">
+      <Filter>ヘッダー ファイル\Drawer</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

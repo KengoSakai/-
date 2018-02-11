@@ -43,7 +43,6 @@ private:
 	LPD3DXBUFFER pMaterialBuffer;	//バッファポインタ
 	DWORD NumMaterials;	//要素数
 	LPDIRECT3DTEXTURE9 pTexture;		//テクスチャポインタ
-	void SetModel(void);
 
 protected:
 	//座標情報
