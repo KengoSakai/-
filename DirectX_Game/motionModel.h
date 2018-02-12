@@ -38,19 +38,21 @@ private:
 	LPD3DXBUFFER pMaterialBuffer[PARTS_MAX];	//バッファポインタ
 	DWORD NumMaterials[PARTS_MAX];	//要素数
 	LPDIRECT3DTEXTURE9 pTexture;		//テクスチャポインタ
-	
+
 protected:
 	//座標情報
 	D3DXVECTOR3 Position;
-	D3DXVECTOR3 Rotate;
+	D3DXVECTOR3 Rotate[PARTS_MAX];
 	D3DXVECTOR3 Scale;
 	D3DXVECTOR3 Vector;
-
-	D3DXMATRIX RotateMatrix;
-	D3DXMATRIX TranslationMatrix;
-	D3DXMATRIX ScaleMatrix;
-	D3DXMATRIX WorldMatrix;
+	D3DXVECTOR3 PartsPosition[PARTS_MAX];
+	
+	D3DXMATRIX RotateVectorMatrix;
+	D3DXMATRIX RotateMatrix[PARTS_MAX];
+	D3DXMATRIX TranslationMatrix[PARTS_MAX];
+	D3DXMATRIX ScaleMatrix[PARTS_MAX];
+	D3DXMATRIX WorldMatrix[PARTS_MAX];
 	D3DXMATRIX ShadowMatrix;
-
 	PARTS ParentParts[PARTS_MAX];
+
 };

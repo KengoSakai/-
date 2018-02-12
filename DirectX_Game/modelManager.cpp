@@ -48,6 +48,8 @@ void CModelManager::Initialize(void)
 	pModelList[TYPE_RIGHT_HAND] = "data/Model/human/RightHand.x";
 	pModelList[TYPE_LEFT_LEG] = "data/Model/human/LeftLeg.x";
 	pModelList[TYPE_RIGHT_LEG] = "data/Model/human/RightLeg.x";
+	pModelList[TYPE_LEFT_FOOT] = "data/Model/human/LeftFoot.x";
+	pModelList[TYPE_RIGHT_FOOT] = "data/Model/human/RightFoot.x";
 }
 
 /******************************************************************

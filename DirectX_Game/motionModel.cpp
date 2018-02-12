@@ -28,7 +28,18 @@
 *******************************************************************/
 CMotionModel::CMotionModel()
 {
+	pTexture = NULL;
+	for (int PartsCount = 0; PartsCount < PARTS_MAX; PartsCount++)
+	{
+		pMesh[PartsCount] = NULL;
+		pMaterialBuffer[PartsCount] = NULL;
+		NumMaterials[PartsCount] = 0;
+		Rotate[PartsCount] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 
+	}
+	Scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+	Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	Vector = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 }
 
 
@@ -37,17 +48,7 @@ CMotionModel::CMotionModel()
 *******************************************************************/
 void CMotionModel::Initialize(void)
 {
-	pTexture = NULL;
-	for (int PartsCount = 0; PartsCount < PARTS_MAX; PartsCount++)
-	{
-		pMesh[PartsCount] = NULL;
-		pMaterialBuffer[PartsCount] = NULL;
-		NumMaterials[PartsCount] = 0;
-	}
-	Rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	Scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
-	Position = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	Vector = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+
 }
 
 /******************************************************************
@@ -76,9 +77,32 @@ void CMotionModel::Draw(void)
 
 	CManager::GetLight()->SetModelLight();
 	D3DMATERIAL9 Matdef;
-	
+
 	for (int Count = 0; Count < PARTS_MAX; Count++)
 	{
+		//単位行列
+		D3DXMatrixIdentity(&WorldMatrix[Count]);
+
+		//拡大行列
+		D3DXMatrixScaling(&ScaleMatrix[Count], Scale.x, Scale.y, Scale.z);
+
+		//平行行列
+		D3DXMatrixTranslation(&TranslationMatrix[Count], PartsPosition[Count].x, PartsPosition[Count].y, PartsPosition[Count].z);
+
+
+		//回転行列
+		D3DXMatrixRotationYawPitchRoll(&RotateMatrix[Count],
+			D3DXToRadian(Rotate[Count].y),
+			D3DXToRadian(Rotate[Count].x),
+			D3DXToRadian(Rotate[Count].z));
+
+		//ワールド変換
+		WorldMatrix[Count] = ScaleMatrix[Count] * RotateMatrix[Count] * TranslationMatrix[Count];
+
+		//ワールド座標に設定
+		pDevice->SetTransform(D3DTS_WORLD, &WorldMatrix[Count]);
+
+
 		pDevice->GetMaterial(&Matdef);
 		D3DXMATERIAL* pMat = (D3DXMATERIAL*)pMaterialBuffer[Count]->GetBufferPointer();
 
@@ -102,27 +126,33 @@ void CMotionModel::SetMatrix(void)
 	//デバイス情報の取得
 	LPDIRECT3DDEVICE9 pD3DDevice = CManager::GetRenderer()->GetDevice();
 
-	//単位行列
-	D3DXMatrixIdentity(&WorldMatrix);
+	for (int Count = 0; Count < PARTS_MAX; Count++)
+	{
+		//単位行列
+		D3DXMatrixIdentity(&WorldMatrix[Count]);
 
-	//拡大行列
-	D3DXMatrixScaling(&ScaleMatrix, Scale.x, Scale.y, Scale.z);
+		//拡大行列
+		D3DXMatrixScaling(&ScaleMatrix[Count], Scale.x, Scale.y, Scale.z);
 
-	//平行行列
-	D3DXMatrixTranslation(&TranslationMatrix, Position.x, Position.y, Position.z);
+		//平行行列
+		D3DXMatrixTranslation(&TranslationMatrix[Count], PartsPosition[Count].x, PartsPosition[Count].y, PartsPosition[Count].z);
 
-	//回転行列
-	D3DXMatrixRotationYawPitchRoll(&RotateMatrix,
-		D3DXToRadian(Rotate.y),
-		D3DXToRadian(Rotate.x),
-		D3DXToRadian(Rotate.z));
+		Rotate[Count].y += Rotate[ParentParts[Count]].y;
+		Rotate[Count].x += Rotate[ParentParts[Count]].x;
+		Rotate[Count].z += Rotate[ParentParts[Count]].z;
 
-	//ワールド変換
-	WorldMatrix = ScaleMatrix * RotateMatrix * TranslationMatrix;
+		//回転行列
+		D3DXMatrixRotationYawPitchRoll(&RotateMatrix[Count],
+			D3DXToRadian(Rotate[Count].y),
+			D3DXToRadian(Rotate[Count].x),
+			D3DXToRadian(Rotate[Count].z));
 
-	//ワールド座標に設定
-	pD3DDevice->SetTransform(D3DTS_WORLD, &WorldMatrix);
+		//ワールド変換
+		WorldMatrix[Count] = ScaleMatrix[Count] * RotateMatrix[Count] * TranslationMatrix[Count];
 
+		//ワールド座標に設定
+		pD3DDevice->SetTransform(D3DTS_WORLD, &WorldMatrix[Count]);
+	}
 }
 /******************************************************************
 マテリアルバッファ情報読み込み処理関数

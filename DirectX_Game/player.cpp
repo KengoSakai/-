@@ -80,11 +80,38 @@ CPlayer::CPlayer()
 void CPlayer::Initialize(void)
 {
 	Position = CStartPosition::SetPosition();
-	Rotate = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	Scale = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
 	Speed = 0.0f;
 	State = WALK;
 	Vector = D3DXVECTOR3(1.0f, 1.0f, 1.0f);
+
+	Rotate[BODY] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	Rotate[HEAD] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	Rotate[ARM_RIGHT] = D3DXVECTOR3(0.0f, 0.0f,-40.0f);
+	Rotate[ARM_LEFT] = D3DXVECTOR3(0.0f, 0.0f, 40.0f);
+	Rotate[HAND_RIGHT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	Rotate[HAND_LEFT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	Rotate[LEG_RIGHT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	Rotate[LEG_LEFT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	Rotate[FOOT_RIGHT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	Rotate[FOOT_LEFT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	
+	for (int Count = 0; Count < PARTS_MAX; Count++)
+	{
+		Rotate[Count] += Rotate[ParentParts[Count]];
+	}
+
+	PartsPosition[BODY] = Position;
+	PartsPosition[HEAD] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 25.0f, 0.0f);
+	PartsPosition[ARM_RIGHT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 15.0f, 0.0f);
+	PartsPosition[ARM_LEFT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 15.0f, 0.0f);
+	PartsPosition[HAND_RIGHT] = PartsPosition[ParentParts[HAND_RIGHT]] + D3DXVECTOR3(10.0, 0.0f, 0.0f);
+	PartsPosition[HAND_LEFT] = PartsPosition[ParentParts[HAND_LEFT]] + D3DXVECTOR3(-10.0f, 0.0f, 0.0f);
+	PartsPosition[LEG_RIGHT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	PartsPosition[LEG_LEFT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	PartsPosition[FOOT_RIGHT] = PartsPosition[ParentParts[FOOT_RIGHT]] + D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	PartsPosition[FOOT_LEFT] = PartsPosition[ParentParts[FOOT_LEFT]] + D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+
 }
 
 /******************************************************************
@@ -126,7 +153,7 @@ void CPlayer::Update(void)
 *******************************************************************/
 void CPlayer::Draw(void)
 {
-	CMotionModel::SetMatrix();
+	//CMotionModel::SetMatrix();
 	CMotionModel::Draw();
 
 #ifdef _DEBUG
@@ -163,8 +190,8 @@ CPlayer *CPlayer::Create(void)
 	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_LEFT_HAND), HAND_LEFT);
 	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_RIGHT_LEG), LEG_RIGHT);
 	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_LEFT_LEG), LEG_LEFT);
-	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_PLAYER), FOOT_RIGHT);
-	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_PLAYER), FOOT_LEFT);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_LEFT_LEG), FOOT_RIGHT);
+	pPlayer->BindBuff(CManager::GetModelManager()->GetMaterialBuffer(CModelManager::TYPE_LEFT_LEG), FOOT_LEFT);
 
 	//メッシュ情報を送る
 	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_BODY), BODY);
@@ -175,9 +202,8 @@ CPlayer *CPlayer::Create(void)
 	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_LEFT_HAND), HAND_LEFT);
 	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_RIGHT_LEG), LEG_RIGHT);
 	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_LEFT_LEG), LEG_LEFT);
-	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_PLAYER), FOOT_RIGHT);
-	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_PLAYER), FOOT_LEFT);
-
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_LEFT_LEG), FOOT_RIGHT);
+	pPlayer->BindMesh(CManager::GetModelManager()->GetMesh(CModelManager::TYPE_LEFT_LEG), FOOT_LEFT);
 
 	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_PLAYER), BODY);
 	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_HEAD), HEAD);
@@ -187,8 +213,8 @@ CPlayer *CPlayer::Create(void)
 	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_LEFT_HAND), HAND_LEFT);
 	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_RIGHT_LEG), LEG_RIGHT);
 	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_LEFT_LEG), LEG_LEFT);
-	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_PLAYER), FOOT_RIGHT);
-	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_PLAYER), FOOT_LEFT);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_LEFT_LEG), FOOT_RIGHT);
+	pPlayer->BindMaterials(CManager::GetModelManager()->GetNumMaterials(CModelManager::TYPE_LEFT_LEG), FOOT_LEFT);
 
 	pPlayer->BindTexture(NULL);
 
@@ -216,25 +242,27 @@ void CPlayer::Move(void)
 
 	if (CManager::GetInputKeyboard()->GetKeyPress(DIK_A))
 	{
-		//回転行列
-		D3DXMatrixRotationYawPitchRoll(&RotateMatrix,
-			D3DXToRadian(-90.0f),
-			D3DXToRadian(0.0f),
-			D3DXToRadian(0.0f));
+			//回転行列
+			D3DXMatrixRotationYawPitchRoll(&RotateVectorMatrix,
+				D3DXToRadian(-90.0f),
+				D3DXToRadian(0.0f),
+				D3DXToRadian(0.0f));
 
-		D3DXVec3TransformCoord(&Vector, &Vector, &RotateMatrix);
+			D3DXVec3TransformCoord(&Vector, &Vector, &RotateVectorMatrix);
+		
 		State = WALK;
 	}
 
 	if (CManager::GetInputKeyboard()->GetKeyPress(DIK_D))
 	{
-		//回転行列
-		D3DXMatrixRotationYawPitchRoll(&RotateMatrix,
-			D3DXToRadian(90.0f),
-			D3DXToRadian(0.0f),
-			D3DXToRadian(0.0f));
+			//回転行列
+			D3DXMatrixRotationYawPitchRoll(&RotateVectorMatrix,
+				D3DXToRadian(90.0f),
+				D3DXToRadian(0.0f),
+				D3DXToRadian(0.0f));
 
-		D3DXVec3TransformCoord(&Vector, &Vector, &RotateMatrix);
+			D3DXVec3TransformCoord(&Vector, &Vector, &RotateVectorMatrix);
+		
 		State = WALK;
 	}
 
@@ -243,10 +271,56 @@ void CPlayer::Move(void)
 		CBullet::Create(Position, Vector, OBJTYPE_PLAYER);
 	}
 
+	if (CManager::GetInputKeyboard()->GetKeyPress(DIK_X))
+	{
+		Rotate[ARM_RIGHT].y += 0.5f;
+		Rotate[HAND_RIGHT].y += 0.5f;
+		//Rotate[LEG_RIGHT].z += 0.5f;
+		//Rotate[LEG_LEFT].z += 0.5f;
+		//Rotate[FOOT_RIGHT].z += 0.5f;
+		//Rotate[FOOT_LEFT].z += 0.5f;
+		for (int Count = 0; Count < PARTS_MAX; Count++)
+		{
+		//	Rotate[Count] += Rotate[ParentParts[Count]];
+		}
+	}
+
 	if (State == WALK)
 	{
+		//力を加える
 		Position = CPhysics::AddForce(Position, Speed * Vector);
 	}
+
+	//パーツの移動
+	PartsPosition[BODY] = Position;
+	PartsPosition[HEAD] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 25.0f, 0.0f);
+	PartsPosition[ARM_RIGHT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 15.0f, 0.0f);
+	PartsPosition[ARM_LEFT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 15.0f, 0.0f);
+
+	PartsPosition[HAND_RIGHT] = PartsPosition[ParentParts[HAND_RIGHT]];
+	PartsPosition[HAND_RIGHT].x += (cosf(D3DXToRadian(Rotate[ParentParts[HAND_RIGHT]].z))+ cosf(D3DXToRadian(Rotate[ParentParts[HAND_RIGHT]].y)))*10.0f;
+	PartsPosition[HAND_RIGHT].y += sinf(D3DXToRadian(Rotate[ParentParts[HAND_RIGHT]].z))*10.0f;
+	PartsPosition[HAND_RIGHT].z += sinf(D3DXToRadian(Rotate[ParentParts[HAND_RIGHT]].y))*10.0f;
+
+	PartsPosition[HAND_LEFT] = PartsPosition[ParentParts[HAND_LEFT]];
+	PartsPosition[HAND_LEFT].x += cosf(D3DXToRadian(Rotate[ParentParts[HAND_LEFT]].z))*-10.0f;
+	PartsPosition[HAND_LEFT].y += sinf(D3DXToRadian(Rotate[ParentParts[HAND_LEFT]].z))*-10.0f;
+	PartsPosition[HAND_LEFT].z += sinf(D3DXToRadian(Rotate[ParentParts[HAND_LEFT]].y))*-10.0f;
+
+	PartsPosition[LEG_RIGHT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 5.0f, 0.0f);
+	PartsPosition[LEG_LEFT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 5.0f, 0.0f);
+
+	PartsPosition[FOOT_RIGHT] = PartsPosition[ParentParts[FOOT_RIGHT]];
+	PartsPosition[FOOT_RIGHT].x += cosf(D3DXToRadian(Rotate[ParentParts[FOOT_RIGHT]].z))*10.0f;
+	PartsPosition[FOOT_RIGHT].y += sinf(D3DXToRadian(Rotate[ParentParts[FOOT_RIGHT]].z))*10.0f;
+	PartsPosition[FOOT_RIGHT].z += sinf(D3DXToRadian(Rotate[ParentParts[FOOT_RIGHT]].x))*10.0f;
+
+
+	PartsPosition[FOOT_LEFT] = PartsPosition[ParentParts[FOOT_LEFT]];
+	PartsPosition[FOOT_LEFT].x += cosf(D3DXToRadian(Rotate[ParentParts[FOOT_LEFT]].z))*-10.0f;
+	PartsPosition[FOOT_LEFT].y += sinf(D3DXToRadian(Rotate[ParentParts[FOOT_LEFT]].z))*-10.0f;
+	PartsPosition[FOOT_LEFT].z += sinf(D3DXToRadian(Rotate[ParentParts[FOOT_LEFT]].x))*-10.0f;
+
 }
 
 /******************************************************************
