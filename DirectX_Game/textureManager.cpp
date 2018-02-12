@@ -48,6 +48,9 @@ void CTextureManager::Initialize(void)
 	pTextureList[TYPE_TITLELOGO] = "data/TEXTURE/TitleLogo.png";
 	pTextureList[TYPE_SCREEN_UI] = "data/TEXTURE/PlayerUI001.png";
 	pTextureList[TYPE_GAMEFINISH] = "data/TEXTURE/GameEnd.png";
+	pTextureList[TYPE_PLAYERWIN] = "data/TEXTURE/win01.png";
+	pTextureList[TYPE_ENEMYWIN] = "data/TEXTURE/win02.png";
+
 }
 
 /******************************************************************

@@ -118,7 +118,6 @@
     <ClCompile Include="pause.cpp" />
     <ClCompile Include="physics.cpp" />
     <ClCompile Include="player.cpp" />
-    <ClCompile Include="ranking.cpp" />
     <ClCompile Include="rankingScore.cpp" />
     <ClCompile Include="renderer.cpp" />
     <ClCompile Include="result.cpp" />
@@ -140,6 +139,7 @@
     <ClCompile Include="timeBox.cpp" />
     <ClCompile Include="title.cpp" />
     <ClCompile Include="titleLogo.cpp" />
+    <ClCompile Include="winPlayer.cpp" />
     <ClCompile Include="xBoxInput.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -181,7 +181,6 @@
     <ClInclude Include="pause.h" />
     <ClInclude Include="physics.h" />
     <ClInclude Include="player.h" />
-    <ClInclude Include="ranking.h" />
     <ClInclude Include="rankingScore.h" />
     <ClInclude Include="renderer.h" />
     <ClInclude Include="result.h" />
@@ -203,6 +202,7 @@
     <ClInclude Include="timeBox.h" />
     <ClInclude Include="title.h" />
     <ClInclude Include="titleLogo.h" />
+    <ClInclude Include="winPlayer.h" />
     <ClInclude Include="xBoxInput.h" />
   </ItemGroup>
   <ItemGroup>

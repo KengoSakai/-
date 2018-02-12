@@ -37,7 +37,7 @@ CScore::CScore(OBJTYPE type)
 	else if (type == OBJTYPE_OTHERPLAYERSCORE)
 	{
 		//•Ï”‰Šú‰»
-		Position = D3DXVECTOR3(1200.0f, 30.0f, 0.0f);
+		Position = D3DXVECTOR3(1200.0f, -20.0f, 0.0f);
 		return;
 	}
 

@@ -30,17 +30,6 @@ void CRankingScore::Initialize(void)
 		//各桁に数字を設定
 		m_apNumber[nCnt]->SetNumber(0);
 	}
-
-	//表示桁数分繰り返す
-	for (int nCnt = 0; nCnt < NUM_DIGIT; nCnt++)
-	{
-		if (m_apNumber[nCnt] != NULL)
-		{
-			//各桁に数値を設定
-			m_apNumber[nCnt]->SetNumber(nScore % 10);
-			nScore /= 10;
-		}
-	}
 }
 
 void CRankingScore::Uninitialize(void)
@@ -85,6 +74,8 @@ CRankingScore *CRankingScore::Create(void)
 	pRankingScore = new CRankingScore;
 
 	pRankingScore->Initialize();
+
 	pRankingScore->SetObjType(OBJTYPE_SCORE);
+
 	return pRankingScore;
 }

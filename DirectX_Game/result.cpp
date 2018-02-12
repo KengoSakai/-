@@ -14,7 +14,7 @@
 #include "manager.h"
 #include "result.h"
 #include "scene.h"
-
+#include "winPlayer.h"
 #include "rankingScore.h"
 #include "meshDome.h"
 #include "meshField.h"
@@ -61,6 +61,10 @@ void CResult::Init(void)
 	CRankingScore::Create();
 	CMeshDome::Create();
 	CMeshField::Create();
+
+	CWinPlayer::Create(CScene::OBJTYPE_PLAYER);
+
+	//CWinPlayer::Create(CScene::OBJTYPE_ENEMY);
 }
 
 /******************************************************************

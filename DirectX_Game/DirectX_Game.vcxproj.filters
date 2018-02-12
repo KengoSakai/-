@@ -252,9 +252,6 @@
     <ClCompile Include="time.cpp">
       <Filter>ソース ファイル\Number</Filter>
     </ClCompile>
-    <ClCompile Include="ranking.cpp">
-      <Filter>ソース ファイル\02_ResultObject</Filter>
-    </ClCompile>
     <ClCompile Include="rankingScore.cpp">
       <Filter>ソース ファイル\02_ResultObject</Filter>
     </ClCompile>
@@ -329,6 +326,9 @@
     </ClCompile>
     <ClCompile Include="gameEnd.cpp">
       <Filter>ソース ファイル\01_GameObject</Filter>
+    </ClCompile>
+    <ClCompile Include="winPlayer.cpp">
+      <Filter>ソース ファイル\02_ResultObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -440,9 +440,6 @@
     <ClInclude Include="time.h">
       <Filter>ヘッダー ファイル\number</Filter>
     </ClInclude>
-    <ClInclude Include="ranking.h">
-      <Filter>ヘッダー ファイル\02_ResultObject</Filter>
-    </ClInclude>
     <ClInclude Include="rankingScore.h">
       <Filter>ヘッダー ファイル\02_ResultObject</Filter>
     </ClInclude>
@@ -514,6 +511,9 @@
     </ClInclude>
     <ClInclude Include="gameEnd.h">
       <Filter>ヘッダー ファイル\01_GameObject</Filter>
+    </ClInclude>
+    <ClInclude Include="winPlayer.h">
+      <Filter>ヘッダー ファイル\02_ResultObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
