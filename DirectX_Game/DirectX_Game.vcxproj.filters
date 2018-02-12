@@ -327,6 +327,9 @@
     <ClCompile Include="motionModel.cpp">
       <Filter>ソース ファイル\Drawer</Filter>
     </ClCompile>
+    <ClCompile Include="gameEnd.cpp">
+      <Filter>ソース ファイル\01_GameObject</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scene.h">
@@ -508,6 +511,9 @@
     </ClInclude>
     <ClInclude Include="motionModel.h">
       <Filter>ヘッダー ファイル\Drawer</Filter>
+    </ClInclude>
+    <ClInclude Include="gameEnd.h">
+      <Filter>ヘッダー ファイル\01_GameObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

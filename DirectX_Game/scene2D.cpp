@@ -102,10 +102,13 @@ void CScene2D :: Initialize(void)
 	pVtx[3].rhw = 1.0f;
 
 	//頂点座標の色
-	pVtx[0].col = D3DCOLOR_RGBA(255,255,255,255);
-	pVtx[1].col = D3DCOLOR_RGBA(255,255,255,255);
-	pVtx[2].col = D3DCOLOR_RGBA(255,255,255,255);
-	pVtx[3].col = D3DCOLOR_RGBA(255,255,255,255);
+	//テクスチャの座標
+	pVtx[0].col = D3DCOLOR_RGBA((int)Color.r, (int)Color.g, (int)Color.b, (int)Color.a);
+	pVtx[1].col = D3DCOLOR_RGBA((int)Color.r, (int)Color.g, (int)Color.b, (int)Color.a);
+	pVtx[2].col = D3DCOLOR_RGBA((int)Color.r, (int)Color.g, (int)Color.b, (int)Color.a);
+	pVtx[3].col = D3DCOLOR_RGBA((int)Color.r, (int)Color.g, (int)Color.b, (int)Color.a);
+
+
 
 	//テクスチャの座標
 	pVtx[0].tex = D3DXVECTOR2(0.0f,0.0f);

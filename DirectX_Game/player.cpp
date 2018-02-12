@@ -89,8 +89,8 @@ void CPlayer::Initialize(void)
 	Rotate[HEAD] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	Rotate[ARM_RIGHT] = D3DXVECTOR3(0.0f, 0.0f,-40.0f);
 	Rotate[ARM_LEFT] = D3DXVECTOR3(0.0f, 0.0f, 40.0f);
-	Rotate[HAND_RIGHT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
-	Rotate[HAND_LEFT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
+	Rotate[HAND_RIGHT] = D3DXVECTOR3(-130.0f, 0.0f, 0.0f);
+	Rotate[HAND_LEFT] = D3DXVECTOR3(-130.0f, 0.0f, 0.0f);
 	Rotate[LEG_RIGHT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	Rotate[LEG_LEFT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
 	Rotate[FOOT_RIGHT] = D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -103,8 +103,8 @@ void CPlayer::Initialize(void)
 
 	PartsPosition[BODY] = Position;
 	PartsPosition[HEAD] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 25.0f, 0.0f);
-	PartsPosition[ARM_RIGHT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 15.0f, 0.0f);
-	PartsPosition[ARM_LEFT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 15.0f, 0.0f);
+	PartsPosition[ARM_RIGHT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 20.0f, 0.0f);
+	PartsPosition[ARM_LEFT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 20.0f, 0.0f);
 	PartsPosition[HAND_RIGHT] = PartsPosition[ParentParts[HAND_RIGHT]] + D3DXVECTOR3(10.0, 0.0f, 0.0f);
 	PartsPosition[HAND_LEFT] = PartsPosition[ParentParts[HAND_LEFT]] + D3DXVECTOR3(-10.0f, 0.0f, 0.0f);
 	PartsPosition[LEG_RIGHT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 0.0f, 0.0f);
@@ -273,12 +273,12 @@ void CPlayer::Move(void)
 
 	if (CManager::GetInputKeyboard()->GetKeyPress(DIK_X))
 	{
-		Rotate[ARM_RIGHT].y += 0.5f;
-		Rotate[HAND_RIGHT].y += 0.5f;
-		//Rotate[LEG_RIGHT].z += 0.5f;
-		//Rotate[LEG_LEFT].z += 0.5f;
-		//Rotate[FOOT_RIGHT].z += 0.5f;
-		//Rotate[FOOT_LEFT].z += 0.5f;
+		Rotate[ARM_RIGHT].x += 0.5f;
+		Rotate[HAND_RIGHT].x += 1.5f;
+		Rotate[LEG_RIGHT].x += 0.5f;
+		Rotate[LEG_LEFT].x += 0.5f;
+		Rotate[FOOT_RIGHT].x += 0.5f;
+		Rotate[FOOT_LEFT].x += 0.5f;
 		for (int Count = 0; Count < PARTS_MAX; Count++)
 		{
 		//	Rotate[Count] += Rotate[ParentParts[Count]];
@@ -294,11 +294,11 @@ void CPlayer::Move(void)
 	//ƒp[ƒc‚ÌˆÚ“®
 	PartsPosition[BODY] = Position;
 	PartsPosition[HEAD] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 25.0f, 0.0f);
-	PartsPosition[ARM_RIGHT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 15.0f, 0.0f);
-	PartsPosition[ARM_LEFT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 15.0f, 0.0f);
+	PartsPosition[ARM_RIGHT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 20.0f, 0.0f);
+	PartsPosition[ARM_LEFT] = PartsPosition[BODY] + D3DXVECTOR3(0.0f, 20.0f, 0.0f);
 
 	PartsPosition[HAND_RIGHT] = PartsPosition[ParentParts[HAND_RIGHT]];
-	PartsPosition[HAND_RIGHT].x += (cosf(D3DXToRadian(Rotate[ParentParts[HAND_RIGHT]].z))+ cosf(D3DXToRadian(Rotate[ParentParts[HAND_RIGHT]].y)))*10.0f;
+	PartsPosition[HAND_RIGHT].x += cosf(D3DXToRadian(Rotate[ParentParts[HAND_RIGHT]].z))*10.0f;
 	PartsPosition[HAND_RIGHT].y += sinf(D3DXToRadian(Rotate[ParentParts[HAND_RIGHT]].z))*10.0f;
 	PartsPosition[HAND_RIGHT].z += sinf(D3DXToRadian(Rotate[ParentParts[HAND_RIGHT]].y))*10.0f;
 
@@ -315,12 +315,10 @@ void CPlayer::Move(void)
 	PartsPosition[FOOT_RIGHT].y += sinf(D3DXToRadian(Rotate[ParentParts[FOOT_RIGHT]].z))*10.0f;
 	PartsPosition[FOOT_RIGHT].z += sinf(D3DXToRadian(Rotate[ParentParts[FOOT_RIGHT]].x))*10.0f;
 
-
 	PartsPosition[FOOT_LEFT] = PartsPosition[ParentParts[FOOT_LEFT]];
 	PartsPosition[FOOT_LEFT].x += cosf(D3DXToRadian(Rotate[ParentParts[FOOT_LEFT]].z))*-10.0f;
 	PartsPosition[FOOT_LEFT].y += sinf(D3DXToRadian(Rotate[ParentParts[FOOT_LEFT]].z))*-10.0f;
 	PartsPosition[FOOT_LEFT].z += sinf(D3DXToRadian(Rotate[ParentParts[FOOT_LEFT]].x))*-10.0f;
-
 }
 
 /******************************************************************

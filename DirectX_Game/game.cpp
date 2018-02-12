@@ -35,6 +35,7 @@
 #include "score.h"
 #include "timeBox.h"
 #include "screenUIMat.h"
+#include "gameEnd.h"
 /******************************************************************
 前方宣言
 *******************************************************************/
@@ -88,24 +89,29 @@ CBaseScene::SCENE_STATE CGame::Update(void)
 	//時間切れなら
 	if (pTime->GetTime() < 0 )
 	{
-		//フェードしていないなら
-		if (CManager::GetFade()->GetFadeState() == CFade::FADE_NONE)
-		{
-			//フェードアウトを設定
-			CManager::GetFade()->SetFade(CFade::FADE_OUT);
-		}
+		CGameEnd::Create();
 
-		//フェードアウトが終了したら
-		else if (CManager::GetFade()->GetFadeState() == CFade::FADE_MAX)
+		if (pTime->GetTime() < (-5*60))
 		{
-			//次のシーンへ
-			return CBaseScene::SCENE_RESULT;
-		}
+			//フェードしていないなら
+			if (CManager::GetFade()->GetFadeState() == CFade::FADE_NONE)
+			{
+				//フェードアウトを設定
+				CManager::GetFade()->SetFade(CFade::FADE_OUT);
+			}
 
-		//例外処理
-		else
-		{
+			//フェードアウトが終了したら
+			else if (CManager::GetFade()->GetFadeState() == CFade::FADE_MAX)
+			{
+				//次のシーンへ
+				return CBaseScene::SCENE_RESULT;
+			}
 
+			//例外処理
+			else
+			{
+
+			}
 		}
 	}
 
